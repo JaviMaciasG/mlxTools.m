@@ -1,7 +1,8 @@
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function mlx2m(method, rename, varargin)
     %% Converts mlx files to m files
-    %
+    % `mlx2m(method, rename, foldersWithSubFolder, foldersWithoutSubFolder)`
+    %   
     % # Arguments:
     % `mlx2m(method::String, rename::Bool, [folders::Array{String}/Cell{Char}],[folders::Array{String}/Cell{Char}])`
     %
@@ -14,7 +15,7 @@ function mlx2m(method, rename, varargin)
     %
     %  Folders specified can have a relative as well as absolute path.
     %
-    % # Example run_addpather
+    % # Example
     % Choose the method, and run the function.
     % ```matlab
     % mlx2m("all", true);
