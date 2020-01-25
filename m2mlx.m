@@ -48,3 +48,13 @@
             mFiles = dir(fullfile(d, '**/*.m'));
 
         % To include a specific folder with GUI
+        case 'GUI_specific'
+            d = uigetdir(pwd, 'Select a folder');
+            mFiles = dir(fullfile(d, '*.m'));
+
+            while d~=0  % continue until user press cancel
+                d = uigetdir(pwd, 'Select a folder');
+                mFiles = [mFiles;dir(fullfile(d, '*.m'))];
+            end
+
+        % To include specific folders
