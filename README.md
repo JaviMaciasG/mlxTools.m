@@ -21,9 +21,16 @@
  mlx2m("all", true);
  ```
 
- Pass a 2nd and 3rd input to include/exclude specific folders if you chose "all_exclude" or "specificFolders"
+ Pass a 2nd and 3rd input to include/exclude specific folders if you chose "all_exclude" or "specific"
  ```matlab
  mlx2m("specified", true, ["Functions"],[pwd]);
  mlx2m("specified", true, ["Functions"],[]);
  mlx2m("exclude", true, ["Functions"],[]);
  ```
+
+# License
+ This is written as part of my Master's thesis and it is licensed under Apache V2, so cite this paper if you use it:
+ ```
+ A. Yahyaabadi, P. Ferguson, ”An intelligent multi-vehicle drone testbed for space systems and remote sensing veriﬁcation,” in Canadian Aeronautics and Space Institute (CASI) ASTRO, Canada, 2019
+ ```
+ In case of changes, either make pull requests to this repository or state the changes.

@@ -1,8 +1,13 @@
+%% m2mlx.m
+% Converts m files to mlx files
+% Apache V2 License - Copyright (c) 2020 Amin Yahyaabadi - aminyahyaabadi74@gmail.com
+% https://github.com/aminya/mlxTools.m
+
 %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function m2mlx(method, rename, varargin)
     %% Converts m files to mlx files
     % `mlx2m(method, rename, foldersWithSubFolder, foldersWithoutSubFolder)`
-    % 
+    %
     % # Arguments:
     % `m2mlx(method::String, rename::Bool, [folders::Array{String}/Cell{Char}],[folders::Array{String}/Cell{Char}])`
     %
@@ -21,7 +26,7 @@ function m2mlx(method, rename, varargin)
     % m2mlx("all", true);
     % ```
     %
-    % Pass a 2nd and 3rd input to include/exclude specific folders if you chose "all_exclude" or "specificFolders"
+    % Pass a 2nd and 3rd input to include/exclude specific folders if you chose "all_exclude" or "specific"
     % ```matlab
     % m2mlx("specified", true, ["Functions"],[pwd]);
     % m2mlx("specified", true, ["Functions"],[]);
