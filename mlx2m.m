@@ -42,3 +42,8 @@
 
             mlxFiles(removeList)=[];
 
+        % To include all under a folder with GUI
+        case 'GUI_all'
+            d = uigetdir(pwd, 'Select a folder');
+            mlxFiles = dir(fullfile(d, '**/*.mlx'));
+
