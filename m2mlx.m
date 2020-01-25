@@ -58,3 +58,28 @@
             end
 
         % To include specific folders
+        case 'specific'
+
+            % folders with their subfolders
+            includedFoldersWSub = varargin{1};
+
+            if ~isempty(includedFoldersWSub)
+                % 1
+                mFiles = dir(fullfile([includedFoldersWSub(i),"**/*.m"]));
+                % 2:end
+                for i=2:length(includedFoldersWSub)
+                    mFiles = [mFiles; dir(fullfile([includedFoldersWSub(i),"**/*.m"]))];
+                end
+            end
+
+            % folders without their subfolders
+            if nargin == 2
+                includedFoldersWOSub = varargin{2};
+
+                if ~isempty(includedFoldersWOSub)
+                    for i=1:length(includedFoldersWOSub)
+                        mFiles = [mFiles; dir(fullfile([includedFoldersWOSub(i),"*.m"]))];
+                    end
+                end
+            end
+    end
