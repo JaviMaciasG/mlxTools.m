@@ -84,3 +84,48 @@
             end
     end
 
+    %% create m folder and folder structure for storing files
+    if isfolder('m')
+    %     disp('Warning: m folder already exists!')
+    %     warning('off','MATLAB:MKDIR:DirectoryExists')
+        answer = questdlg('m folder already exists. Do you want to remove it? ', ...
+            'm Folder removal', ...
+            'Yes','No','Yes');
+        % Handle response
+        switch answer
+            case 'Yes'
+                rmdir m s
+            case 'No'
+                warning('off','MATLAB:MKDIR:DirectoryExists')
+                disp('Warning: overwriting files')
+        end
+    end
+
+    currentFolder = pwd;
+    mFolders=fullfile('m',erase(unique({mlxFiles.folder}),currentFolder));
+    for i=1:length(mFolders)
+    mkdir(mFolders{i})
+    end
+
+    %% start conversion
+    mFiles=mlxFiles;
+    for i=1:length(mlxFiles)
+
+        mlxFiles(i).path=fullfile(mlxFiles(i).folder, mlxFiles(i).name);
+        if rename
+            mFiles(i).path=fullfile('m',erase(mlxFiles(i).folder,currentFolder),[mlxFiles(i).name(1:end-4),'M.m']);
+            % adds an M to the end to avoid conflicts
+        else
+            mFiles(i).path=fullfile('m',erase(mlxFiles(i).folder,currentFolder),[mlxFiles(i).name(1:end-4),'.m']);
+        end
+
+        matlab.internal.liveeditor.openAndConvert(mlxFiles(i).path,mFiles(i).path)
+
+        % progress bar:
+        per=floor(i/length(mlxFiles)*100);
+        fprintf([repmat('.',1,round(per/2)),'%d%%',repmat('.',1,round(per/2)),'|\n'],per)
+    end
+
+    disp('finished')
+
+end
