@@ -57,3 +57,30 @@
                 mlxFiles = [mlxFiles;dir(fullfile(d, '*.mlx'))];
             end
 
+        % To include specific folders
+        case 'specific'
+
+            % folders with their subfolders
+            includedFoldersWSub = varargin{1};
+
+            if ~isempty(includedFoldersWSub)
+                % 1
+                mlxFiles = dir(fullfile([includedFoldersWSub(i),"**/*.mlx"]));
+                % 2:end
+                for i=2:length(includedFoldersWSub)
+                    mlxFiles = [mlxFiles; dir(fullfile([includedFoldersWSub(i),"**/*.mlx"]))];
+                end
+            end
+
+            % folders without their subfolders
+            if nargin == 2
+                includedFoldersWOSub = varargin{2};
+
+                if ~isempty(includedFoldersWOSub)
+                    for i=1:length(includedFoldersWOSub)
+                        mlxFiles = [mlxFiles; dir(fullfile([includedFoldersWOSub(i),"*.mlx"]))];
+                    end
+                end
+            end
+    end
+
