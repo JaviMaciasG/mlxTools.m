@@ -42,3 +42,9 @@
 
             mFiles(removeList)=[];
 
+        % To include all under a folder with GUI
+        case 'GUI_all'
+            d = uigetdir(pwd, 'Select a folder');
+            mFiles = dir(fullfile(d, '**/*.m'));
+
+        % To include a specific folder with GUI
