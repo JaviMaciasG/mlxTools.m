@@ -47,3 +47,13 @@
             d = uigetdir(pwd, 'Select a folder');
             mlxFiles = dir(fullfile(d, '**/*.mlx'));
 
+        % To include a specific folder with GUI
+        case 'GUI_specific'
+            d = uigetdir(pwd, 'Select a folder');
+            mlxFiles = dir(fullfile(d, '*.mlx'));
+
+            while d~=0  % continue until user press cancel
+                d = uigetdir(pwd, 'Select a folder');
+                mlxFiles = [mlxFiles;dir(fullfile(d, '*.mlx'))];
+            end
+
