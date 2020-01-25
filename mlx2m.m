@@ -1,3 +1,38 @@
+%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+function mlx2m(method, rename, varargin)
+    %% Converts mlx files to m files
+    %
+    % # Arguments:
+    % `mlx2m(method::String, rename::Bool, [folders::Array{String}/Cell{Char}],[folders::Array{String}/Cell{Char}])`
+    %
+    %  - method: can be `"all","all_exclude","specific","GUI_all","GUI_specific"`
+    %  - folders (optional):
+    %   - if method is `"all_exclude"`: pass the folder names that should be excluded
+    %   - if method is `"specific"`: pass the folder names that should be included.
+    %       - 3rd argument are the folders that their subfolders are considered
+    %       - 4th argument are the folders that their subfolders are ignored.
+    %
+    %  Folders specified can have a relative as well as absolute path.
+    %
+    % # Example run_addpather
+    % Choose the method, and run the function.
+    % ```matlab
+    % mlx2m("all", true);
+    % ```
+    %
+    % Pass a 2nd and 3rd input to include/exclude specific folders if you chose "all_exclude" or "specificFolders"
+    % ```matlab
+    % mlx2m("specified", true, ["Functions"],[pwd]);
+    % mlx2m("specified", true, ["Functions"],[]);
+    % mlx2m("exclude", true, ["Functions"],[]);
+    % ```
+
+    disp("mlx to m conversion started")
+    %% files collect
+
+    % '**/*.mlx' % means all under that folder
+    % '*.mlx' % means only files in the root folder
+
     switch method
 
         % To include all
